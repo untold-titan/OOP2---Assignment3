@@ -12,7 +12,14 @@ namespace Assignment3
         /// Checks if the list is empty.
         /// </summary>
         /// <returns>True if it is empty.</returns>
-        bool IsEmpty();
+        public  bool IsEmpty() 
+        {
+            if (this.First == null) 
+            {
+                return true;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Clears the list.
@@ -102,7 +109,10 @@ namespace Assignment3
         /// Gets the number of elements in the list.
         /// </summary>
         /// <returns>Size of list (0 meaning empty)</returns>
-        int Count();
+        int Depth() 
+        {
+            return this.Count;
+        }
 
         /// <summary>
         /// Removes first element from list
