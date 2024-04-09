@@ -44,9 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChainList.cs" />
-    <Compile Include="ILinkedListADT .cs" />
-    <Compile Include="Node.cs" />
+    <Compile Include="Utility\ChainList.cs" />
+    <Compile Include="Utility\Node.cs" />
     <Compile Include="Utility\ILinkedListADT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

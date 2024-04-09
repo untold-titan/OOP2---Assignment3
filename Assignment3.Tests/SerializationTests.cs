@@ -4,7 +4,7 @@ namespace Assignment3.Tests
 {
     public class SerializationTests
     {
-        private ILinkedListADT users;
+        private ILinkedListADT users = new ChainList();
         private readonly string testFileName = "test_users.bin";
 
         [SetUp]
@@ -43,9 +43,9 @@ namespace Assignment3.Tests
         {
             SerializationHelper.SerializeUsers(users, testFileName);
             ILinkedListADT deserializedUsers = SerializationHelper.DeserializeUsers(testFileName);
-            
+
             Assert.IsTrue(users.Count() == deserializedUsers.Count());
-            
+
             for (int i = 0; i < users.Count(); i++)
             {
                 User expected = users.GetValue(i);

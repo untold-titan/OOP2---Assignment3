@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assignment3
 {
@@ -12,83 +8,25 @@ namespace Assignment3
         /// Checks if the list is empty.
         /// </summary>
         /// <returns>True if it is empty.</returns>
-        public  bool IsEmpty() 
-        {
-            if (this.First == null) 
-            {
-                return true;
-            }
-            return false;
-        }
+        bool IsEmpty();
 
         /// <summary>
         /// Clears the list.
         /// </summary>
-        public void RemoveList()
-        {
+        void Clear();
 
-            if (First == null || this.Count == 0)
-            {
-                //Nothing to do 
-                return;
-            }
-            while (this.First != null)
-            {
-                this.RemoveFirst();
-
-            }
-            return;
-
-        }
         /// <summary>
         /// Adds to the end of the list.
+        /// </summary>
+        /// <param name="value">Value to append.</param>
+        void AddLast(User value);
 
-        public void AddLast(Node<T> newNode)
-        {
-            if (this.Last == null)
-            { //This means the lilnked list is empty 
-                this.First = newNode;
-                this.Last = newNode;
+        /// <summary>
+        /// Prepends (adds to beginning) value to the list.
+        /// </summary>
+        /// <param name="value">Value to store inside element.</param>
+        void AddFirst(User value);
 
-            }
-            else
-            {
-                this.Last.Next = newNode;
-                Last = newNode;
-            }
-            Count++;
-
-        }
-        
-        public void AddFirst(Node<T> newNode)
-        {
-            if (this.First == null)
-            {
-                // this measn the linkedlist is empty 
-
-                //insert the new node on point the  head and tail to the node
-                this.First = newNode;
-                this.Last = newNode;
-            }
-            else
-            {
-                newNode.Next = this.First;
-                this.First = newNode;
-            }
-            Count++;
-        }
-        public void AddAfter(Node<T> newNode, Node<T> oldNode)
-        {
-            if (this.Last == oldNode)
-            {
-                Last = newNode;
-
-            }
-            newNode.Next = oldNode.Next;
-            oldNode.Next = newNode;
-            this.Count++;
-        }
-        
         /// <summary>
         /// Adds a new element at a specific position.
         /// </summary>
@@ -109,77 +47,26 @@ namespace Assignment3
         /// Gets the number of elements in the list.
         /// </summary>
         /// <returns>Size of list (0 meaning empty)</returns>
-        int Depth() 
-        {
-            return this.Count;
-        }
+        int Count();
 
         /// <summary>
         /// Removes first element from list
         /// </summary>
         /// <exception cref="CannotRemoveException">Thrown if list is empty.</exception>
-        public void RemoveFirst()
-        {
-            if (First == null || this.Count == 0)
-            {
-                return;
-            }
-            First = First.Next;
-            this.Count--;
-        }
+        void RemoveFirst();
 
         /// <summary>
         /// Removes last element from list
         /// </summary>
         /// <exception cref="CannotRemoveException">Thrown if list is empty.</exception>
-        public void RemoveLast()
-        {
-            if (Last == null || this.Count == 0)
-            {
-                return;
-            }
-            Last = Last.Next;
-            Last.Next = null;
-            this.Count--;
-        }
+        void RemoveLast();
 
         /// <summary>
         /// Removes element at index from list, reducing the size.
         /// </summary>
         /// <param name="index">Index of element to remove.</param>
         /// <exception cref="IndexOutOfRangeException">Thrown if index is negative or larger than size - 1 of list.</exception>
-        public void Remove(Node<T> HollowedNode)
-        {
-          
-            if (First == null || this.Count == 0)
-            {
-              
-                return;
-            }
-            if (this.First == HollowedNode)
-            {
-                this.RemoveFirst();
-                return;
-            }
-
-            Node<T> past = First;
-            Node<T> current = past.Next;
-
-            while (current != null && current != HollowedNode)
-            {
-                //move to next node 
-                past = current;
-                current = past.Next;
-            }
-
-            //Remove it 
-            if (current != null)
-            {
-                past.Next = current.Next;
-                this.Count--;
-            }
-
-        }
+        void Remove(int index);
 
         /// <summary>
         /// Gets the value at the specified index.
@@ -202,16 +89,5 @@ namespace Assignment3
         /// <param name="value">Value to find index of.</param>
         /// <returns>True if element exists with value.</returns>
         bool Contains(User value);
-        public Node<T> Find(T target)
-        {
-            Node<T> currentNode = First;
-
-            while (currentNode != null && !currentNode.Data.Equals(target))
-            {
-                currentNode = currentNode.Next;
-            }
-
-            return currentNode;
-        }
     }
 }
