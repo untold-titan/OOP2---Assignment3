@@ -82,7 +82,7 @@ public class ChainList : ILinkedListADT
             throw new IndexOutOfRangeException();
         }
         Node<User> currentNode = First;
-        for(var i = 0; i != index; i++)
+        for(var i = 0; i != index - 1; i++)
         {
             currentNode = currentNode.Next;
         }
@@ -135,7 +135,7 @@ public class ChainList : ILinkedListADT
         {
             currentNode = currentNode.Next;
         }
-        currentNode = currentNode.Next.Next;
+        currentNode.Next = currentNode.Next.Next;
     }
 
     public User GetValue(int index)
@@ -164,7 +164,7 @@ public class ChainList : ILinkedListADT
             currentNode = currentNode.Next;
             if (currentNode.Data.Equals(value))
             {
-                return i;
+                return i + 1;
             }
         }
         return -1;
@@ -192,6 +192,7 @@ public class ChainList : ILinkedListADT
     {
         var array = new List<User>();
         var currentNode = First;
+        array.Add(currentNode.Data);
         int i = 1;
         for (; ; )
         {
